@@ -1,0 +1,1 @@
+alert('Scripts are on!');
