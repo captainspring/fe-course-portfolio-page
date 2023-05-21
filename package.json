@@ -2,26 +2,32 @@
   "name": "fe-course-portfolio-page",
   "version": "1.0.0",
   "description": "Portfolio page",
-  "main": "index.html",
-  "engines": {
-    "node": "^18.16.0",
-    "pnpm": "^8.3.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev",
-    "build": "gulp build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/captainspring/fe-course-portfolio-page.git"
-  },
   "author": "Yana Klose-Ivanova",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/captainspring/fe-course-portfolio-page/issues"
   },
   "homepage": "https://github.com/captainspring/fe-course-portfolio-page#readme",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/captainspring/fe-course-portfolio-page.git"
+  },
+  "engines": {
+    "node": "^18.16.0",
+    "pnpm": "^8.3.1"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "build": "gulp build",
+    "lint:css": "stylelint 'src/**/*.scss' --fix",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.css": "stylelint 'src/**/*.scss' --fix"
+  },
   "browserslist": [
     "last 2 versions",
     "not dead",
@@ -42,9 +48,14 @@
     "gulp-sass": "^5.1.0",
     "gulp-svgstore": "^9.0.0",
     "gulp-webp": "^4.0.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
     "postcss-csso": "^6.0.1",
     "postcss-sort-media-queries": "^5.1.0",
     "sass": "^1.62.0",
+    "stylelint": "^15.6.2",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "stylelint-order": "^6.0.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
