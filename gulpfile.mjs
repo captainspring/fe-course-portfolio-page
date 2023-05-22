@@ -110,7 +110,7 @@ gulp.task('js', () => {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('build'));
 });
 
 // Functional
@@ -120,16 +120,18 @@ gulp.task('clean', () => {
 
 gulp.task('copy', () => {
   return gulp.src([
-      'src/assets/favicons/*.{png,jpg}'
+      'src/assets/favicons/favicon.ico',
+      'src/assets/favicons/manifest.webmanifest',
+      'src/assets/favicons/icons/*.{png,svg}'
     ], {
-      base: 'source'
+      base: 'src/assets'
     })
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('reload', (done) => {
   server.reload();
-  done(); 
+  done();
 });
 
 gulp.task('server', () => {
