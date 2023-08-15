@@ -2,7 +2,8 @@ import gulp from 'gulp';
 const { series, watch, src, dest, task } = gulp;
 import rename from 'gulp-rename';
 import { deleteAsync } from 'del';
-import htmlmin from 'gulp-htmlmin';
+import posthtml from 'gulp-posthtml'
+import includeHTML from 'posthtml-include'
 import gulpSass from 'gulp-sass';
 import dartSass from 'sass';
 const sass = gulpSass(dartSass);
@@ -22,16 +23,16 @@ const server = browserSync.create();
 
 // HTML
 gulp.task('html', () => {
-  return gulp.src('src/html/**/*.html')
-    .pipe(htmlmin({
-      collapseWhitespace: true
-    }))
+  return gulp.src('src/index.html')
+    .pipe(posthtml([includeHTML({
+      root: './'
+    })]))
     .pipe(gulp.dest('build'))
 });
 
 // Styles
 gulp.task('css', () => {
-  return gulp.src('src/style/style.scss')
+  return gulp.src('src/scss/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
       autoprefixer(),
@@ -41,9 +42,10 @@ gulp.task('css', () => {
       })
     ]))
     .pipe(rename({
-      suffix: '.min'
+      suffix: '.min',
+      dirname: ''
     }))
-    .pipe(gulp.dest('build'))
+    .pipe(gulp.dest('build/css'))
     .pipe(server.stream());
 });
 
@@ -73,7 +75,7 @@ gulp.task('copyImages', () => {
 gulp.task('createWebp', () => {
   return gulp.src('src/assets/img/**/*.{png,jpg}')
     .pipe(webp({
-      quality: 90
+      quality: 95
     }))
     .pipe(gulp.dest('build/img'));
 });
@@ -108,9 +110,10 @@ gulp.task('js', () => {
     .pipe(source('scripts.js'))
     .pipe(buffer())
     .pipe(rename({
-      suffix: '.min'
+      suffix: '.min',
+      dirname: ''
     }))
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('build/js'));
 });
 
 // Functional
@@ -151,5 +154,5 @@ gulp.task('server', () => {
 });
 
 // Tasks
-gulp.task('dev', gulp.series('clean', 'copy', 'html', 'css', 'js', 'server'));
-gulp.task('build', gulp.series('clean', 'copy', 'html', 'css', 'js'));
+gulp.task('dev', gulp.series('clean', 'copyImages', 'createWebp', 'copy', 'html', 'css', 'js', 'server'));
+gulp.task('build', gulp.series('clean', 'optimizeImages', 'copyImages', 'createWebp', 'copy', 'html', 'css', 'js'));
