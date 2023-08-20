@@ -1,0 +1,19 @@
+@use './../media' as *;
+
+@mixin hover($selectors...) {
+  @if length($selectors) > 0 {
+    @for $i from 0 to length($selectors) {
+      #{nth($selectors, $i + 1)}:hover {
+        @include media(lg) {
+          @content;
+        }
+      }
+    }
+  } @else {
+    &:hover {
+      @include media(lg) {
+        @content;
+      }
+    }
+  }
+}

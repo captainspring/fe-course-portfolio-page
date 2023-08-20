@@ -1,0 +1,5 @@
+@use './../../scss/utils/z-index' as *;
+
+.header {
+  @include z-index(sticky, header);
+}

@@ -1,0 +1,51 @@
+@use 'sass:list';
+@use 'sass:map';
+@use './../../helpers/util-nth-delete' as *;
+@use './z-index' as *;
+
+@function util-z-number($keys) {
+  $map: $layers;
+  $found-index: null;
+
+  @each $key in $keys {
+    @if (type-of($map) == 'map') {
+      $found-index: list.index(map.keys($map), $key);
+      $map: map.get($map, $key);
+    } @else {
+      $found-index: list.index($map, $key);
+    }
+  }
+
+  @if (not $found-index) {
+    @error '#{$key} is not a part of the elevation map: #{$layers}';
+  }
+
+  @return $found-index;
+}
+
+@mixin z-index($keys...) {
+  $first-el: list.nth($keys, 1);
+  $valid-positions: relative, absolute, fixed, sticky;
+  $negative-index: below;
+
+  $position: relative;
+  $index: 0;
+
+  @if (index($valid-positions, $first-el)) {
+    $position: $first-el;
+    $second-el: list.nth($keys, 2);
+
+    @if (index($negative-index, $second-el)) {
+      $index: -1;
+    } @else {
+      $index: util-z-number(util-nth-delete($keys, 1));
+    }
+  } @else if (index($negative-index, $first-el)) {
+    $index: -1;
+  } @else {
+    $index: util-z-number($keys);
+  }
+
+  position: $position;
+  z-index: $index;
+}

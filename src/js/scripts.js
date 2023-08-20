@@ -1,1 +1,3 @@
-alert('Scripts are on!');
+import { isSafariInit } from './utils/isSafari';
+
+isSafariInit();

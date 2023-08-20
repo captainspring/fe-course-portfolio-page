@@ -1,1 +1,4 @@
-@use './../components/main/style.scss';
+@use './scaffolding/scaffolding.scss';
+@use './components/container.scss';
+
+@use './blocks.scss';

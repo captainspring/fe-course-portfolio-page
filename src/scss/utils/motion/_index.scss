@@ -1,0 +1,56 @@
+@use 'sass:list';
+@use 'sass:map';
+@use './../../helpers/util-nth-delete' as *;
+@use './motion' as *;
+
+@function checkArgs($default-easing, $values) {
+  $result: ();
+
+  $values-list: util-nth-delete($values, 1);
+  $values-list: util-nth-delete($values-list, 1);
+
+  @each $value in $values-list {
+    @if length($values-list) == 1 and str-index(quote($value), 'ms') {
+      $result-value: $value $default-easing;
+      $result: list.append($result, $result-value, space);
+    } @else if str-index(quote($value), 'ms') or str-index(quote($value), 'ease') {
+      $result: list.append($result, $value, space);
+    } @else {
+      @error 'The 3rd and/or the 4th arg in motion() must be either delay in ms or easing. Your current arg: #{$value}';
+    }
+  }
+
+  @return $result;
+}
+
+@mixin motion($animations...) {
+  $values-list: ();
+
+  @each $animation in $animations {
+    @if length($animation) < 2 {
+      @error 'Mixin motion() must contain a CSS property as the 1st arg and an animation type as the 2nd arg. Your current args: #{$animation}';
+    } @else {
+      $property: list.nth($animation, 1);
+      $type: list.nth($animation, 2);
+      $default-easing: ease-in-out;
+
+      $valid-types: map.keys($motion-map);
+
+      @if index($valid-types, $type) {
+        $duration: map.get($motion-map, $type);
+        $additional-values: $default-easing;
+
+        @if length($animation) > 2 {
+          $additional-values: checkArgs($default-easing, $animation);
+        }
+
+        $current-value: $property $duration $additional-values;
+        $values-list: list.append($values-list, $current-value, comma);
+      } @else {
+        @error 'Add a valid type of animation as the 2nd arg for #{$animation} in motion(#{$animations}). Valid types are: #{$valid-types}';
+      }
+    }
+  }
+
+  transition: $values-list;
+}

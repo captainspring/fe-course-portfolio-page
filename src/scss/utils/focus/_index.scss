@@ -1,0 +1,9 @@
+@mixin focus($selector) {
+  #{$selector}:focus-visible {
+    @content;
+  }
+
+  .is-safari #{$selector}:focus {
+    @content;
+  }
+}

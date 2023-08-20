@@ -1,0 +1,25 @@
+@use './utils/media' as *;
+
+.container {
+  @include media(sm-max) {
+    padding: 20px;
+  }
+
+  @include media(md) {
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include media(lg) {
+    width: 928px;
+  }
+
+  @include media(xl) {
+    width: 1168px;
+  }
+
+  @include media(xxl) {
+    width: 1526px;
+  }
+}

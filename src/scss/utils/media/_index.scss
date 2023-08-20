@@ -1,0 +1,53 @@
+@use 'sass:map';
+@use 'sass:string';
+@use './breakpoints' as *;
+
+@mixin media($arg1, $arg2: 0) {
+  @if (type-of($arg1) == string) {
+    @if (string.index($arg1, '-max')) {
+      $arg1: '(max-width: #{map.get($breakpoints-map, $arg1)})';
+    } @else {
+      $arg1: '(min-width: #{map.get($breakpoints-map, $arg1)})';
+    }
+  }
+
+  @if (type-of($arg2) == string) {
+    $arg2: 'max-width: #{map.get($breakpoints-map, $arg2)}';
+  }
+
+  @if (type-of($arg1) == string and type-of($arg2) == string) {
+    @media #{'#{$arg1} and #{$arg2}'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == string and $arg2 == 0) {
+    @media #{'#{$arg1}'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == string and (type-of($arg2) == number and $arg2 != 0)) {
+      @media #{'#{$arg1} and (max-width: #{$arg2}px)'} {
+      @content;
+    }
+  }
+
+  @if ((type-of($arg1) == number and $arg1 != 0) and type-of($arg2) == string) {
+      @media #{'(min-width: #{$arg1}px) and #{$arg2}'} {
+        @content;
+    }
+  }
+
+  @if (type-of($arg1) == number and type-of($arg2) == number) {
+    @media #{'(min-width: #{$arg1}px) and (max-width: #{$arg2}px)'} {
+      @content;
+    }
+  }
+
+  @if (type-of($arg1) == number and $arg2 ==0) {
+    @media #{'(min-width: #{$arg1}px)'} {
+      @content;
+    }
+  }
+}
