@@ -154,5 +154,5 @@ gulp.task('server', () => {
 });
 
 // Tasks
-gulp.task('dev', gulp.series('clean', 'copyImages', 'createWebp', 'copy', 'html', 'css', 'js', 'server'));
-gulp.task('build', gulp.series('clean', 'optimizeImages', 'copyImages', 'createWebp', 'copy', 'html', 'css', 'js'));
+gulp.task('dev', gulp.series('clean', 'copyImages', 'createWebp', 'sprite', 'copy', 'html', 'css', 'js', 'server'));
+gulp.task('build', gulp.series('clean', 'optimizeImages', 'copyImages', 'createWebp', 'sprite', 'copy', 'html', 'css', 'js'));
