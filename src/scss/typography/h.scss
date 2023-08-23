@@ -1,0 +1,40 @@
+@use './../utils/media' as *;
+
+.h {
+  margin-top: 0;
+  font-weight: 900;
+  line-height: 1;
+
+  &--1 {
+    @include media(lg) {
+      font-size: 110px;
+      letter-spacing: -4.4px;
+    }
+  }
+
+  &--2 {
+    @include media(lg) {
+      font-size: 64px;
+    }
+  }
+
+  &--3 {
+    @include media(lg) {
+      font-size: 48px;
+    }
+  }
+
+  &--4 {
+    @include media(lg) {
+      font-size: 32px;
+      line-height: 27px;
+    }
+  }
+
+  &--5 {
+    @include media(lg) {
+      font-size: 28px;
+      letter-spacing: -1.96px;
+    }
+  }
+}

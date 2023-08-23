@@ -2,7 +2,7 @@
 
 .container {
   @include media(sm-max) {
-    padding: 20px;
+    padding: 0 20px;
   }
 
   @include media(md) {

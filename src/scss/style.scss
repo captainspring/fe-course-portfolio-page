@@ -1,4 +1,10 @@
 @use './scaffolding/scaffolding.scss';
 @use './components/container.scss';
+@use './components/colors.scss';
+
+@use './typography/h.scss';
+@use './typography/t.scss';
+@use './typography/p.scss';
+@use './typography/f.scss';
 
 @use './blocks.scss';

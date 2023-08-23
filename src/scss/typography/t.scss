@@ -1,0 +1,29 @@
+@use './../utils/media' as *;
+
+.t {
+  margin-top: 0;
+  font-weight: 700;
+  line-height: 27px;
+
+  &--1 {
+    @include media(lg) {
+      font-size: 28px;
+      letter-spacing: -1.4px;
+    }
+  }
+
+  &--2 {
+    font-weight: 600;
+
+    @include media(lg) {
+      font-size: 18px;
+    }
+  }
+
+  &--3 {
+    @include media(lg) {
+      font-size: 15px;
+      letter-spacing: 3px;
+    }
+  }
+}

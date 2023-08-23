@@ -1,0 +1,48 @@
+@use './../utils/media' as *;
+
+.p {
+  margin-top: 0;
+  font-weight: 400;
+  line-height: 27px;
+
+  &--1 {
+    @include media(lg) {
+      font-size: 32px;
+      line-height: 51.2px;
+    }
+  }
+
+  &--2 {
+    @include media(lg) {
+      font-size: 21px;
+      line-height: 30px;
+    }
+  }
+
+  &--3 {
+    @include media(lg) {
+      font-size: 18px;
+    }
+  }
+
+  &--4 {
+    @include media(lg) {
+      font-size: 16px;
+      letter-spacing: 4.8px;
+    }
+  }
+
+  &--5 {
+    @include media(lg) {
+      font-size: 15px;
+      line-height: 30px;
+    }
+  }
+
+  &--6 {
+    @include media(lg) {
+      font-size: 14px;
+      letter-spacing: 5.6px;
+    }
+  }
+}
