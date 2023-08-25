@@ -22,7 +22,35 @@
       <include src="build/icons/icons-sprite.svg"></include>
     </div>
 
-    <include src="src/components/header/index.html"></include>
+    <include
+      src="src/components/header/index.html"
+      locals='{
+        "socials": [
+          {
+            "link": "https://www.instagram.com/yana.klose/",
+            "icon": "instagram",
+            "srText": "Ссылка на инстаграм"
+          },
+          {
+            "link": "https://www.linkedin.com/in/yana-klose/",
+            "icon": "linkedin",
+            "stText": "Ссылка на LinkedIn"
+          }
+        ],
+        "pm": [
+          {
+            "link": "email@example.com",
+            "type": "mailto",
+            "icon": "envelope"
+          },
+          {
+            "link": "+12024444444",
+            "type": "tel",
+            "icon": "headphones"
+          }
+        ]
+      }'
+    ></include>
 
     <script src="./js/scripts.min.js"></script>
   </body>

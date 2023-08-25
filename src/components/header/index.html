@@ -1,5 +1,68 @@
-<header class="header">
+<header data-theme="dark" class="header">
   <div class="header__wrapper container">
-    Header
+    <strong class="header__name h h--5">
+      Yana Klose
+    </strong>
+
+    <span class="header__profession p p--6">
+      Frontend developer
+    </span>
+
+    <button class="header__button" type="button" aria-label="Открыть меню контактов">
+      <span class="header__button-line"></span>
+    </button>
+
+    <div class="header__contacts">
+      <ul class="header__list header__list--socials">
+        <each loop="item in socials">
+          <li class="header__item header__item--{{ item.icon }}">
+            <a
+              href="{{ item.link }}"
+              target="_blank"
+              tabindex="-1"
+              class="header__link header__link--socials"
+            >
+              <svg
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="header__icon header__icon--socials"
+              >
+                <use href="#{{ item.icon }}-stroke" />
+              </svg>
+
+              <span class="sr-only">
+                {{ item.srText }}
+              </span>
+            </a>
+          </li>
+        </each>
+      </ul>
+
+      <ul class="header__list header__list--pm">
+        <each loop="item in pm">
+          <li class="header__item">
+            <a
+              href="{{ item.type }}:{{ item.link }}"
+              tabindex="-1"
+              class="header__link header__link--pm"
+            >
+              <svg
+                width="24"
+                height="24"
+                aria-hidden="true"
+                class="header__icon header__icon--pm"
+              >
+                <use href="#{{ item.icon }}-stroke" />
+              </svg>
+
+              <span class="header__pm-text p p--3">
+                {{ item.link }}
+              </span>
+            </a>
+          </li>
+        </each>
+      </ul>
+    </div>
   </div>
 </header>

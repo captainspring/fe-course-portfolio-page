@@ -32,6 +32,9 @@
   }
 
   &--5 {
+    font-size: 18px;
+    letter-spacing: -.7px;
+
     @include media(lg) {
       font-size: 28px;
       letter-spacing: -1.96px;

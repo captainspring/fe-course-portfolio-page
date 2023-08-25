@@ -10,10 +10,10 @@
   $values-list: util-nth-delete($values-list, 1);
 
   @each $value in $values-list {
-    @if length($values-list) == 1 and str-index(quote($value), 'ms') {
+    @if length($values-list) == 1 and str-index(quote(#{$value}), 'ms') {
       $result-value: $value $default-easing;
       $result: list.append($result, $result-value, space);
-    } @else if str-index(quote($value), 'ms') or str-index(quote($value), 'ease') {
+    } @else if str-index(quote(#{$value}), 'ms') or str-index(quote(#{$value}), 'ease') {
       $result: list.append($result, $value, space);
     } @else {
       @error 'The 3rd and/or the 4th arg in motion() must be either delay in ms or easing. Your current arg: #{$value}';
