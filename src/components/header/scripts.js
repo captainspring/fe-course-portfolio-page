@@ -1,12 +1,15 @@
 import { media } from './../../js/utils/const';
 
+const header = document.querySelector('.header');
+const desktop = window.matchMedia(`(min-width: ${media.LG}px)`);
+
 const handleMobileMenu = () => {
-  const button = document.querySelector('.header__button');
-  const menu = document.querySelector('.header__contacts');
-  const socialsLinks = document.querySelectorAll('.header__link');
+  const button = header.querySelector('.header__button');
+  const menu = header.querySelector('.header__contacts');
+  const socialsLinks = header.querySelectorAll('.header__link');
 
   // Menu
-  const menuHeight = menu.offsetHeight;
+  const menuHeight = 44;
   let isMenuOpen = false;
 
   const toggleLinksTabindex = (enable) => {
@@ -28,8 +31,6 @@ const handleMobileMenu = () => {
   }
 
   // Media
-  const desktop = window.matchMedia(`(min-width: ${media.LG}px)`);
-
   const mediaChangeListener = () => {
     toggleLinksTabindex(desktop.matches);
 
@@ -51,4 +52,23 @@ const handleMobileMenu = () => {
   desktop.addEventListener('change', mediaChangeListener);
 }
 
-export { handleMobileMenu }
+const handleScrollHeader = () => {
+  let prevScrollpos = window.pageYOffset;
+
+  const handleScroll = () => {
+    let currentScrollPos = window.pageYOffset;
+    const headerHeight = header.offsetHeight;
+
+    if (prevScrollpos > currentScrollPos) {
+      header.style.top = '0';
+    } else {
+      header.style.top = `-${headerHeight}px`;
+    }
+
+    prevScrollpos = currentScrollPos;
+  }
+
+  window.addEventListener('scroll', handleScroll);
+}
+
+export { handleMobileMenu, handleScrollHeader }

@@ -18,8 +18,12 @@
 
 // styles
 .header {
-  @include z-index(sticky, header);
+  @include z-index(fixed, header);
+  @include motion(top menu-appear-main);
 
+  top: 0;
+  left: 0;
+  width: 100%;
   padding-top: 20px;
   color: var(--text-main-color);
   background-color: var(--bg-main-color);
@@ -32,15 +36,29 @@
 
 .header__wrapper {
   display: grid;
-  grid-column-gap: 8px;
   grid-template-rows: auto auto 1fr;
   grid-template-columns: 1fr 24px;
+
+  @include media(md-max) {
+    grid-column-gap: 8px;
+  }
+
+  @include media(lg) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .header__name {
   display: block;
   grid-row: 1/2;
   grid-column: 1/2;
+  margin-bottom: 4px;
+
+  @include media(lg) {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
 }
 
 .header__profession {
@@ -48,7 +66,14 @@
   grid-row: 2/3;
   grid-column: 1/2;
   margin-bottom: 20px;
+  line-height: 1;
   text-transform: uppercase;
+
+  @include media(lg) {
+    margin-top: 6px;
+    margin-right: 41px;
+    margin-bottom: 0;
+  }
 }
 
 .header__button {
@@ -64,7 +89,7 @@
   justify-content: center;
   width: 24px;
   height: 18px;
-  margin-top: 13px;
+  margin-top: 7px;
 
   @include media(lg) {
     display: none;
@@ -129,6 +154,14 @@
   grid-row: -2/-1;
   grid-column: 1/-1;
   overflow: hidden;
+
+  @include media(lg) {
+    flex-grow: 1;
+  }
+
+  @include media(xl) {
+    padding-right: 46px;
+  }
 }
 
 .header__list {
@@ -137,15 +170,22 @@
 
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
   opacity: 0;
+
+  @include media(md-max) {
+    padding-bottom: 20px;
+  }
 
   @include media(lg) {
     opacity: 1;
   }
 
-  &:not(:last-child) {
+  &--socials {
     margin-right: 20px;
+
+    @include media(lg) {
+      margin-right: auto;
+    }
   }
 }
 
@@ -170,10 +210,22 @@
 .header__item {
   &:not(:last-child) {
     margin-right: 20px;
+
+    @include media(xl) {
+      margin-right: 25px;
+    }
   }
 
   &--linkedin {
     margin-top: -4px;
+  }
+
+  &--pm {
+    &:not(:last-child) {
+      @include media(xl) {
+        margin-right: 29px;
+      }
+    }
   }
 }
 
@@ -185,6 +237,13 @@
   @include hover {
     @include link-interaction;
   }
+
+  &--pm {
+    @include media(lg) {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 @include focus('.header__link') {
@@ -195,10 +254,21 @@
   display: block;
   width: 24px;
   height: 24px;
+
+  &--pm {
+    @include media(lg) {
+      margin-right: 11px;
+      color: var(--icon-main-color);
+    }
+  }
 }
 
 .header__pm-text {
   @include media(md-max) {
     display: none;
+  }
+
+  @include media(lg) {
+    text-decoration: underline;
   }
 }

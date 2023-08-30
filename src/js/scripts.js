@@ -1,7 +1,8 @@
 import { isSafariInit } from './utils/isSafari';
 
-import { handleMobileMenu } from './../components/header/scripts';
+import { handleMobileMenu, handleScrollHeader } from './../components/header/scripts';
 
 isSafariInit();
 
 handleMobileMenu();
+handleScrollHeader();
