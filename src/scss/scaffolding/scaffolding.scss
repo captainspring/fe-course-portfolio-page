@@ -12,6 +12,9 @@ html {
 }
 
 body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr;
   min-width: 320px;
   min-height: 100vh;
   color: var(--text-main-color);
@@ -27,6 +30,14 @@ body {
     font-size: 16px;
     line-height: 24px;
   }
+}
+
+main {
+  grid-row: 1/2;
+}
+
+footer {
+  grid-row: 2/-1;
 }
 
 img {

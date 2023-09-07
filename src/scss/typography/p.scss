@@ -35,6 +35,9 @@
   }
 
   &--5 {
+    font-size: 14px;
+    line-height: 28px;
+
     @include media(lg) {
       font-size: 15px;
       line-height: 30px;
