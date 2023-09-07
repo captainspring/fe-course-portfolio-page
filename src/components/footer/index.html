@@ -1,0 +1,62 @@
+<footer class="footer" data-theme="dark">
+  <div class="footer__wrapper container">
+    <nav class="footer__nav">
+      <each loop="item in nav">
+        <li class="footer__nav-item">
+          <a
+            href="{{ item.link }}"
+            class="footer__nav-link f f--15"
+          >
+            {{ item.title }}
+          </a>
+        </li>
+      </each>
+    </nav>
+
+    <div class="footer__contacts">
+      <a
+        href="mailto:email@example.com"
+        class="footer__email"
+      >
+        email@example.com
+      </a>
+
+      <address class="footer__address p p--5">
+        Washington DC, USA 🇺🇸
+      </address>
+    </div>
+
+    <ul class="footer__socials">
+      <each loop="item in socials">
+        <li class="footer__social-item">
+          <a
+            href="{{ item.link }}"
+            target="_blank"
+            class="footer__link"
+          >
+            <svg
+              width="24"
+              height="24"
+              aria-hidden="true"
+              class="footer__icon"
+            >
+              <use href="#{{ item.icon }}" />
+            </svg>
+
+            <span class="sr-only">
+              {{ item.srText }}
+            </span>
+          </a>
+        </li>
+      </each>
+    </ul>
+
+    <span class="footer__copyright p p--3">
+      © 2023 Yana Klose. All rights reserved.
+    </span>
+
+    <span class="footer__jungle-copy p p--3">
+      Design by <b>TemplatesJungle</b>.
+    </span>
+  </div>
+</footer>
