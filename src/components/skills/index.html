@@ -1,0 +1,57 @@
+<section class="skills container" id="about">
+  <div class="skills__wrapper">
+    <div class="skills__skills">
+      <h2 class="skills__title h h--4">
+        Skills
+      </h2>
+
+      <ul class="skills__list">
+        <each loop="skill in skills">
+          <li class="skills__item">
+            <h3 class="skills__subtitle t t--3">
+              {{ skill.title }}
+            </h3>
+
+            <span class="skills__progress-bar" style="--progress: {{ skill.progress }}"></span>
+          </li>
+        </each>
+      </ul>
+    </div>
+
+    <div class="skills__highlights">
+      <h2 class="skills__title h h--4">
+        Highlights
+      </h2>
+
+      <ul class="skills__highlights-list">
+        <li class="skills__highlights-item">
+          <strong class="skills__number h h--2">
+            50+
+          </strong>
+
+          <span class="skills__subline p p--2">
+            Design System components
+          </span>
+
+          <p class="skills__desc p p--3">
+            I worked closely with designers to create complex design systems that will work seamlessly across several company websites, thus decreasing the TTM by 50%.
+          </p>
+        </li>
+
+        <li class="skills__highlights-item">
+          <strong class="skills__number h h--2">
+            145
+          </strong>
+
+          <span class="skills__subline p p--2">
+            tasks
+          </span>
+
+          <p class="skills__desc p p--3">
+            I lead a project to revise and refactor old UI-components system to integrate it with the new design system, thus eliminating inconsistencies in UI/UX and old codebase.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -13,6 +13,9 @@
   }
 
   &--2 {
+    font-size: 18px;
+    line-height: 24px;
+
     @include media(lg) {
       font-size: 21px;
       line-height: 30px;

@@ -59,6 +59,29 @@
 
     <main>
       <include src="src/components/start-screen/index.html"></include>
+      <include
+        src="src/components/skills/index.html"
+        locals='{
+          "skills": [
+            {
+              "title": "HTML / CSS",
+              "progress": "100%"
+            },
+            {
+              "title": "Figma",
+              "progress": "75%"
+            },
+            {
+              "title": "JavaScript",
+              "progress": "40%"
+            },
+            {
+              "title": "VueJS",
+              "progress": "40%"
+            }
+          ]
+        }'
+      ></include>
     </main>
 
     <include

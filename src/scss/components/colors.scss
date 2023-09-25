@@ -7,12 +7,14 @@
 [data-theme="light"] {
   --bg-main-color: #fff;
   --text-main-color: #333;
-  --text-secondary-color: #f8f8f8;
+  --text-secondary-color: #777;
+  --text-decoration-color: #f8f8f8;
 }
 
 [data-theme="dark"] {
   --bg-main-color: #343434;
   --bg-main-color-rgb: 34, 34, 34;
   --text-main-color: #fff;
-  --text-secondary-color: #ccc;
+  --text-secondary-color: #bbbbbb;
+  --text-decoration-color: #ccc;
 }

@@ -1,0 +1,68 @@
+@use './../../scss/utils/media' as *;
+@use './../../scss/utils/reset' as *;
+
+.skills {
+  margin-bottom: 72px;
+}
+
+.skills__title {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.skills__skills {
+  margin-bottom: 45px;
+}
+
+.skills__list {
+  @include ulres;
+}
+
+.skills__item {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.skills__subtitle {
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.skills__progress-bar {
+  position: relative;
+  display: block;
+  height: 3px;
+  background-color: var(--icon-main-color);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: var(--progress);
+    height: 100%;
+    background-color: var(--accent-secondary-color);
+    content: '';
+  }
+}
+
+.skills__highlights-list {
+  @include ulres;
+}
+
+.skills__number {
+  display: block;
+}
+
+.skills__subline {
+  display: block;
+  margin-bottom: 8px;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--text-secondary-color);
+}
+
+.skills__desc {
+  color: var(--text-secondary-color);
+}

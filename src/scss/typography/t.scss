@@ -21,6 +21,9 @@
   }
 
   &--3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+
     @include media(lg) {
       font-size: 15px;
       letter-spacing: 3px;
