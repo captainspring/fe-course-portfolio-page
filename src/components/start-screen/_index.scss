@@ -1,13 +1,11 @@
 @use './../../scss/utils/media' as *;
 
 .start-screen {
-  margin-bottom: 72px;
   padding-top: 72px;
   color: var(--text-main-color);
   background-color: var(--bg-main-color);
 
   @include media(lg) {
-    margin-bottom: 176px;
     padding-top: 116px;
   }
 }
