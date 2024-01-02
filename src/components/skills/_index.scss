@@ -1,13 +1,31 @@
 @use './../../scss/utils/media' as *;
 @use './../../scss/utils/reset' as *;
 
-.skills {
-  margin-bottom: 72px;
+.skills__wrapper {
+  @include media(lg) {
+    display: grid;
+    grid-column-gap: 180px;
+    grid-template-columns: 380px 1fr;
+  }
+
+  @include media(xl) {
+    grid-column-gap: 235px;
+    grid-template-columns: 425px 1fr;
+  }
+
+  @include media(xxl) {
+    grid-column-gap: 275px;
+    grid-template-columns: 493px 1fr;
+  }
 }
 
 .skills__title {
   margin-bottom: 20px;
   text-transform: uppercase;
+
+  @include media(lg) {
+    margin-bottom: 83px;
+  }
 }
 
 .skills__skills {
@@ -16,11 +34,19 @@
 
 .skills__list {
   @include ulres;
+
+  @include media(lg) {
+    padding-top: 26px;
+  }
 }
 
 .skills__item {
   &:not(:last-child) {
     margin-bottom: 10px;
+
+    @include media(lg) {
+      margin-bottom: 17px;
+    }
   }
 }
 
@@ -51,6 +77,16 @@
   @include ulres;
 }
 
+.skills__highlights-item {
+  &:not(:last-child) {
+    margin-bottom: 16px;
+
+    @include media(lg) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 .skills__number {
   display: block;
 }
@@ -64,5 +100,6 @@
 }
 
 .skills__desc {
+  margin-bottom: 0;
   color: var(--text-secondary-color);
 }
