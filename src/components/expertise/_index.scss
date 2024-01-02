@@ -1,0 +1,95 @@
+@use './../../scss/utils/media' as *;
+@use './../../scss/utils/reset' as *;
+
+.expertise {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: var(--text-decoration-color);
+    font-weight: 900;
+    font-size: 330px;
+    line-height: 1;
+    text-transform: uppercase;
+    content: 'Frontend';
+
+    @include media(sm-max) {
+      transform: translateY(-50%);
+    }
+
+    @include media(md) {
+      top: -25px;
+    }
+
+    @include media(lg) {
+      top: -58px;
+      font-size: 630px;
+    }
+
+    @include media(xxl) {
+      top: -88px;
+      left: 60px;
+      font-size: 830px;
+    }
+  }
+}
+
+.expertise__title {
+  position: relative;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+
+  @include media(md) {
+    text-align: center;
+  }
+}
+
+.expertise__list {
+  @include ulres;
+
+  max-width: 1210px;
+  margin: 0 auto;
+
+  @include media(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.expertise__item {
+  position: relative;
+
+  &:not(:last-child) {
+    @include media(sm-max) {
+      margin-bottom: 46px;
+    }
+  }
+
+  &::before {
+    font-size: 130px;
+    line-height: 87px;
+    letter-spacing: -13px;
+    content: '0'counter(list-item)'.';
+
+    @include media(lg) {
+      font-size: 230px;
+      line-height: 167px;
+    }
+  }
+}
+
+.expertise__text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: inline-block;
+  padding: 0 4px;
+  background-color: var(--bg-main-color);
+  transform: translateY(-100%);
+
+  @include media(lg) {
+    padding: 1px 8px;
+  }
+}
