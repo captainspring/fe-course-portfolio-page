@@ -57,19 +57,26 @@
       }'
     ></include>
 
-    <main>
-      <include src="src/components/start-screen/index.html"></include>
+    <main class="main">
+      <include
+        src="src/components/start-screen/index.html"
+        locals='{
+          "class": "main__start-screen"
+        }'
+      ></include>
+
       <include
         src="src/components/skills/index.html"
         locals='{
+          "class": "main__skills",
           "skills": [
             {
               "title": "HTML / CSS",
               "progress": "100%"
             },
             {
-              "title": "Figma",
-              "progress": "75%"
+              "title": "SCSS / LESS",
+              "progress": "100%"
             },
             {
               "title": "JavaScript",
@@ -78,7 +85,23 @@
             {
               "title": "VueJS",
               "progress": "40%"
+            },
+            {
+              "title": "Figma",
+              "progress": "75%"
             }
+          ]
+        }'
+      ></include>
+
+      <include
+        src="src/components/expertise/index.html"
+        locals='{
+          "class": "main__expertise",
+          "list": [
+            "Web programming",
+            "Storybook",
+            "Design systems"
           ]
         }'
       ></include>
@@ -91,6 +114,10 @@
           {
             "title": "About",
             "link": "#about"
+          },
+          {
+            "title": "Expertise",
+            "link": "#expertise"
           },
           {
             "title": "Portfolio",
