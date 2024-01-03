@@ -1,0 +1,70 @@
+<section class="block portfolio container {{ class }}" id="portfolio">
+  <h2 class="portfolio__title p p--4">
+    My recent works
+  </h2>
+
+  <p class="portfolio__subline h h--3">
+    Creating websites with great love for modular approach
+  </p>
+
+  <p class="portfolio__desc p p--3">
+    I enjoy creating neat modular component systems that make websites not only beautiful but also easier to code and maintain.
+  </p>
+
+  <ul class="portfolio__list">
+    <each loop="item in list">
+      <li class="portfolio__item">
+        <button
+          type="button"
+          data-image="{{ item.imageName }}"
+          class="portfolio__button"
+        >
+          <if condition="item.imageName">
+            <picture class="portfolio__picture">
+              <source
+                media="(min-width: 1024px)"
+                type="image/webp"
+                srcset="img/portfolio/{{ item.imageName }}-lg@1x.webp 1x, img/portfolio/{{ item.imageName }}-lg@2x.webp 2x"
+              >
+              <source
+                media="(min-width: 1024px)"
+                srcset="img/portfolio/{{ item.imageName }}-lg@1x.jpg 1x, img/portfolio/{{ item.imageName }}-lg@2x.jpg 2x"
+              >
+              <source
+                type="image/webp"
+                srcset="img/portfolio/{{ item.imageName }}-sm@1x.webp 1x, img/portfolio/{{ item.imageName }}-sm@2x.webp 2x"
+              >
+              <img
+                src="img/portfolio/{{ item.imageName }}-sm@1x.jpg"
+                srcset="img/portfolio/{{ item.imageName }}-sm@2x.jpg 2x"
+                width="280"
+                height="209"
+                loading="lazy"
+                decoding="async"
+                alt=""
+                class="portfolio__img"
+              >
+            </picture>
+          </if>
+
+          <else>
+            <picture class="portfolio__picture">
+              <img
+                src="https://placehold.co/487x365"
+                width="280"
+                height="209"
+                loading="lazy"
+                decoding="async"
+                alt=""
+                class="portfolio__img">
+            </picture>
+          </else>
+        </button>
+
+        <h3 class="portfolio__subtitle t t--2">
+          {{ item.title }}
+        </h3>
+      </li>
+    </each>
+  </ul>
+</section>
