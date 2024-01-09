@@ -1,12 +1,15 @@
 :root {
   --icon-main-color: #ccc;
+  --icon-secondary-color: #000;
   --accent-main-color: #e54646;
   --accent-secondary-color: #ff5b5b;
+  --bg-overlay-color: 0, 0, 0;
 }
 
 [data-theme="light"] {
   --bg-main-color: #fff;
   --bg-decoration-color: #f8f8f8;
+  --bg-accent-color: #343434;
   --text-main-color: #333;
   --text-secondary-color: #777;
   --text-decoration-color: #f8f8f8;
@@ -15,6 +18,7 @@
 [data-theme="dark"] {
   --bg-main-color: #343434;
   --bg-main-color-rgb: 34, 34, 34;
+  --bg-accent-color: #000;
   --bg-decoration-color: #ccc;
   --text-main-color: #fff;
   --text-secondary-color: #bbbbbb;

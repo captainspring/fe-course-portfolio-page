@@ -1,0 +1,92 @@
+@use './../../scss/utils/media' as *;
+@use './../../scss/utils/reset' as *;
+@use './../../scss/utils/z-index' as *;
+@use './../../scss/utils/interaction' as *;
+
+.popup {
+  @include z-index(fixed, popup);
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+
+  &--show {
+    display: block;
+  }
+}
+
+.popup__wrapper {
+  @include motion(background-color popup-appear-main 150ms);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: transparent;
+
+  @include media(md) {
+    padding: 40px;
+  }
+}
+
+.popup--show .popup__wrapper {
+  background-color: rgba(var(--bg-overlay-color), .5);
+}
+
+.popup__content {
+  @include motion(all popup-appear-main 250ms);
+
+  position: relative;
+  width: fit-content;
+  transform: translateY(20px);
+}
+
+.popup--show .popup__content {
+  transform: translateY(0);
+}
+
+.popup__close {
+  @include inpres;
+  @include motion(all button-highlight-main);
+
+  position: absolute;
+  top: -5px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 7px;
+  border-radius: 50%;
+  color: var(--icon-secondary-color);
+  background-color: var(--bg-main-color);
+  transform: translateY(-100%);
+  cursor: pointer;
+
+  @include hover {
+    color: var(--accent-main-color);
+    background-color: var(--bg-accent-color);
+  }
+}
+
+@include focus('.popup__close') {
+  color: var(--accent-main-color);
+  background-color: var(--bg-accent-color);
+}
+
+.popup__picture {
+  display: block;
+
+  @include media(md) {
+    max-width: calc(100vw - 60px);
+    max-height: calc(100vw - 80px);
+  }
+}
+
+.popup__img {
+  width: 100%;
+  max-height: calc(100vh - 80px);
+}

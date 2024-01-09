@@ -33,6 +33,10 @@ body {
   }
 }
 
+.scroll-lock {
+  overflow: hidden;
+}
+
 main {
   grid-row: 1/2;
 }
