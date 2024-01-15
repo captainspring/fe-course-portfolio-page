@@ -3,6 +3,26 @@
 @use './../../scss/utils/z-index' as *;
 @use './../../scss/utils/interaction' as *;
 
+@keyframes popup-bg-show {
+  0% { background-color: rgba(var(--bg-overlay-color), 0); }
+  100% { background-color: rgba(var(--bg-overlay-color), .5); }
+}
+
+@keyframes popup-bg-hide {
+  0% { background-color: rgba(var(--bg-overlay-color), .5); }
+  100% { background-color: rgba(var(--bg-overlay-color), 0); }
+}
+
+@keyframes popup-show {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popup-hide {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
 .popup {
   @include z-index(fixed, popup);
 
@@ -18,33 +38,42 @@
 }
 
 .popup__wrapper {
-  @include motion(background-color popup-appear-main 150ms);
-
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   background-color: transparent;
+  animation: 250ms ease-in-out forwards;
 
   @include media(md) {
     padding: 40px;
   }
 }
 
-.popup--show .popup__wrapper {
-  background-color: rgba(var(--bg-overlay-color), .5);
+.popup--show:not(.popup--hide) .popup__wrapper {
+  animation-name: popup-bg-show;
+}
+
+.popup--hide .popup__wrapper {
+  animation-name: popup-bg-hide;
 }
 
 .popup__content {
-  @include motion(all popup-appear-main 250ms);
-
   position: relative;
   width: fit-content;
-  transform: translateY(20px);
+  opacity: 0;
+  animation: 250ms ease-in-out forwards;
 }
 
-.popup--show .popup__content {
-  transform: translateY(0);
+.popup--show:not(.popup--hide) .popup__content {
+  animation-name: popup-show;
+  animation-delay: 200ms;
+}
+
+.popup--hide .popup__content {
+  animation-name: popup-hide;
 }
 
 .popup__close {
