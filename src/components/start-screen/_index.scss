@@ -49,12 +49,14 @@
 
   @include media(md) {
     right: 0;
+    width: 360px;
+    height: 360px;
   }
 
   @include media(lg) {
     bottom: 20px;
-    width: 500px;
-    height: 500px;
+    width: 485px;
+    height: 485px;
   }
 
   @include media(xl) {
@@ -63,7 +65,7 @@
     height: 720px;
   }
 
-  @include media(xl) {
+  @include media(xxl) {
     right: -77px;
     bottom: 59px;
     width: 928px;
