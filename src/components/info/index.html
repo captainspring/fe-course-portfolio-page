@@ -1,0 +1,29 @@
+<section class="block info {{ class }}" id="info">
+  <div class="info__wrapper container">
+    <each loop="part in info">
+      <div class="info__part">
+        <h2 class="info__title h h--4">
+          {{ part.title }}
+        </h2>
+
+        <ul class="info__list">
+          <each loop="item in part.list">
+            <li class="info__item">
+              <h3 class="info__subtitle p p--2">
+                <span class="info__subtitle-text">{{ item.title }}</span><if condition="item.role">: {{ item.role }}</if>
+              </h3>
+
+              <b class="info__years h h--2">
+                {{ item.years }}
+              </b>
+
+              <p class="info__text p p--3">
+                {{ item.description }}
+              </p>
+            </li>
+          </each>
+        </ul>
+      </div>
+    </each>
+  </div>
+</section>
